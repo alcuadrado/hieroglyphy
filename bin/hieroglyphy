@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+var hieroglyphy = require("../hieroglyphy.js"),
+    fs = require("fs");
+
+if ((process.argv.length !== 3) || (process.argv[2] == "--help") ||
+    (process.argv[2] == "-h")) {
+
+    console.log("Run it with the file to convert as first argument.");
+    console.log("It prints the output to stdout.");
+    process.exit(1);
+}
+
+fs.readFile(process.argv[2], function (err, data) {
+  if (err) throw err;
+  console.log(hieroglyphy(data.toString()));
+});

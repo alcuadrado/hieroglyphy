@@ -1,0 +1,16 @@
+{
+    "name": "hieroglyphy",
+    "description": "Convert any javascript to a sequence of ()[]+! characters",
+    "author": "Patricio Palladino <email@patriciopalladino.com>",
+    "version": "0.1.0",
+    "dependencies": {},
+    "bin": {
+        "hieroglyphy": "./bin/hieroglyphy"
+    },
+    "main": "./hieroglyphy.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/alcuadrado/hieroglyphy"
+    },
+    "license": "MIT"
+}

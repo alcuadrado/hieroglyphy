@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>test - MUST run in http or https</title>
+    </head>
+    <body>
+        <script src="hieroglyphy.js"></script>
+        <script>
+            var i,
+                c,
+                encoded,
+                evaled,
+                script;
+
+            for (i = 0; i < 127; i += 1) {
+
+                if ((i == 10) || (i == 13) || (i == 34) || (i == 92)) {
+                    continue; //We can't test these chars like this
+                }
+
+                c = String.fromCharCode(i);
+                encoded = hieroglyphy("return \"" + c + "\";");
+                evaled = eval(encoded);
+
+                if (c !== evaled) {
+                    console.error("Error at char %s", c);
+                }
+            }
+
+            c = "\\";
+
+            encoded = hieroglyphy("return \"\\\\\";");
+            evaled = eval(encoded);
+
+            if (c !== evaled) {
+                console.error("Error at char %s", c);
+            }
+
+            //a script doing something and testing 10, 13, 34 and some unicode
+            script = "document.body.innerHTML =\r\n" +
+                "\"<h1>It Works ☺!</h1>\"";
+
+            eval(hieroglyphy(script));
+
+            if (document.body.innerHTML !== "<h1>It Works ☺!</h1>") {
+                console.error("Error with the script");
+            }
+
+        </script>
+    </body>
+</html>
