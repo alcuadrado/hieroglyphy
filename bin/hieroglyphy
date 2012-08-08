@@ -1,17 +1,41 @@
 #!/usr/bin/env node
 
 var hieroglyphy = require("../hieroglyphy.js"),
+    pkg = require('../package.json'),
+    version = pkg.version,
+    program = require('commander'),
     fs = require("fs");
 
-if ((process.argv.length !== 3) || (process.argv[2] == "--help") ||
-    (process.argv[2] == "-h")) {
+program.version(version);
 
-    console.log("Run it with the file to convert as first argument.");
-    console.log("It prints the output to stdout.");
-    process.exit(1);
-}
+program
+   .command('script <file>')
+   .description('transform a script to symbols')
+   .action(function(file){
+        fs.readFile(file, function (err, data) {
+          if (err) throw err;
+          process.stdout.write(hieroglyphy.hieroglyphyScript(data.toString()));
+        });
+   });
 
-fs.readFile(process.argv[2], function (err, data) {
-  if (err) throw err;
-  console.log(hieroglyphy(data.toString()));
-});
+program
+   .command('string <file>')
+   .description('transform a string to symbols')
+   .action(function(file){
+        fs.readFile(file, function (err, data) {
+          if (err) throw err;
+          process.stdout.write(hieroglyphy.hieroglyphyString(data.toString()));
+        });
+   });
+
+program
+   .command('number <file>')
+   .description('transform a number to symbols (errors may arise for lager n))')
+   .action(function(file){
+        fs.readFile(file, function (err, data) {
+          if (err) throw err;
+          process.stdout.write(hieroglyphy.hieroglyphyNumber(data.toString()));
+        });
+   });
+
+program.parse(process.argv);
