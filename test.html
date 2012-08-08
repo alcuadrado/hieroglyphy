@@ -14,38 +14,35 @@
                 script;
 
             for (i = 0; i < 127; i += 1) {
-
-                if ((i == 10) || (i == 13) || (i == 34) || (i == 92)) {
-                    continue; //We can't test these chars like this
-                }
-
                 c = String.fromCharCode(i);
-                encoded = hieroglyphy("return \"" + c + "\";");
+                encoded = hieroglyphy.hieroglyphyString(c);
                 evaled = eval(encoded);
 
                 if (c !== evaled) {
-                    console.error("Error at char %s", c);
+                    throw new Error("Error at char %s", c);
                 }
             }
 
-            c = "\\";
+            for (i = 0; i < 1000; i += 1) {
+                encoded = hieroglyphy.hieroglyphyNumber(i);
+                evaled = eval(encoded);
 
-            encoded = hieroglyphy("return \"\\\\\";");
-            evaled = eval(encoded);
-
-            if (c !== evaled) {
-                console.error("Error at char %s", c);
+                if (i !== evaled) {
+                    throw new Error("Error at number %d", i);
+                }
             }
 
-            //a script doing something and testing 10, 13, 34 and some unicode
+            //a script doing something (with some unicode)
             script = "document.body.innerHTML =\r\n" +
-                "\"<h1>It Works ☺!</h1>\"";
+                "\"<h1>Testing λ</h1>\"";
 
-            eval(hieroglyphy(script));
+            eval(hieroglyphy.hieroglyphyScript(script));
 
-            if (document.body.innerHTML !== "<h1>It Works ☺!</h1>") {
-                console.error("Error with the script");
+            if (document.body.innerHTML !== "<h1>Testing λ</h1>") {
+                throw new Error("Error with the script");
             }
+
+            document.body.innerHTML = "<h1>It Works ☺!</h1>";
 
         </script>
     </body>

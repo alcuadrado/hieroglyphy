@@ -3,7 +3,9 @@
     "description": "Convert any javascript to a sequence of ()[]+! characters",
     "author": "Patricio Palladino <email@patriciopalladino.com>",
     "version": "0.1.0",
-    "dependencies": {},
+    "dependencies": {
+        "commander": ">= 1.0.0"
+    },
     "bin": {
         "hieroglyphy": "./bin/hieroglyphy"
     },
