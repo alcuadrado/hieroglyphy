@@ -68,7 +68,6 @@
     characters["s"] = "(" + _false + ")[" + numbers[3] + "]";
     characters["t"] = "(" + _true + ")[" + numbers[0] + "]";
     characters["u"] = "(" + _undefined + ")[" + numbers[0] +"]";
-
     characters["N"] = "(" + _NaN + ")[" + numbers[0] + "]";
     characters["O"] = "(" + _object_Object + ")[" + numbers[8] + "]";
 
@@ -172,6 +171,8 @@
     }
 
     function hieroglyphyNumber (n) {
+        n = +n;
+
         if (n <= 9) {
             return numbers[n];
         }
