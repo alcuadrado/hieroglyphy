@@ -6,36 +6,50 @@ var hieroglyphy = require("../hieroglyphy.js"),
     program = require('commander'),
     fs = require("fs");
 
+function processFileOrStdin(filePath, processorFunction) {
+    if (filePath) {
+        fs.readFile(filePath, function (err, data) {
+          if (err) throw err;
+          data = data.toString().trim();
+          process.stdout.write(processorFunction(data));
+        });
+    } else {
+        var text = "";
+
+        process.stdin.resume();
+        process.stdin.setEncoding('utf8');
+
+        process.stdin.on('data', function (data) {
+            text += data.toString();
+        });
+
+        process.stdin.on('end', function () {
+            process.stdout.write(processorFunction(text.trim()));
+        });
+    }
+}
+
 program.version(version);
 
 program
-   .command('script <file>')
+   .command('script [file]')
    .description('transform a script to symbols')
    .action(function(file){
-        fs.readFile(file, function (err, data) {
-          if (err) throw err;
-          process.stdout.write(hieroglyphy.hieroglyphyScript(data.toString()));
-        });
+        processFileOrStdin(file, hieroglyphy.hieroglyphyScript);
    });
 
 program
-   .command('string <file>')
+   .command('string [file]')
    .description('transform a string to symbols')
    .action(function(file){
-        fs.readFile(file, function (err, data) {
-          if (err) throw err;
-          process.stdout.write(hieroglyphy.hieroglyphyString(data.toString()));
-        });
+        processFileOrStdin(file, hieroglyphy.hieroglyphyString);
    });
 
 program
-   .command('number <file>')
+   .command('number [file]')
    .description('transform a number to symbols (errors may arise for lager n))')
    .action(function(file){
-        fs.readFile(file, function (err, data) {
-          if (err) throw err;
-          process.stdout.write(hieroglyphy.hieroglyphyNumber(data.toString()));
-        });
+        processFileOrStdin(file, hieroglyphy.hieroglyphyNumber);
    });
 
 program.parse(process.argv);
