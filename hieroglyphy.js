@@ -47,7 +47,7 @@
     _NaN = "+{}+[]";
     _true = "!![]+[]";
     _false = "![]+[]";
-    _undefined = "[][+[]]+[]";
+    _undefined = "[][[]]+[]";
 
     characters[" "] = "(" + _object_Object + ")[" + numbers[7]  + "]";
     characters["["] = "(" + _object_Object + ")[" + numbers[0]  + "]";
