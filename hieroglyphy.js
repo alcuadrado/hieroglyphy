@@ -15,6 +15,12 @@
         escape,
         unescape,
         locationString,
+        numberConstructor,
+        numberConstructorString,
+        arrayConstructor,
+        arrayConstructorString,
+        stringConstructor,
+        fromCharCode,
         API;
 
     numbers = [
@@ -86,11 +92,36 @@
     functionConstructor = "[][" + hieroglyphyString("sort") + "][" +
         hieroglyphyString("constructor") + "]";
 
-    //Below characters need target http(s) pages
-    locationString = "[]+" + hieroglyphyScript("return location");
-    characters["h"] = "(" + locationString + ")" + "[" + numbers[0] + "]";
-    characters["p"] = "(" + locationString + ")" + "[" + numbers[3] + "]";
-    characters["/"] = "(" + locationString + ")" + "[" + numbers[6] + "]";
+    numberConstructor = "("+numbers[0]+")"+"["+hieroglyphyString('constructor')+"]";
+    numberConstructorString = "[]+" + numberConstructor ;
+
+    arrayConstructor = "([])"+"["+hieroglyphyString('constructor')+"]";
+    arrayConstructorString = "[]+" + arrayConstructor ;
+
+    stringConstructor = "("+characters["a"]+")"+"["+hieroglyphyString('constructor')+"]";
+
+
+    characters["m"] = "(" + numberConstructorString + ")[" + hieroglyphyNumber(11) + "]";
+    characters["A"] = "(" + arrayConstructorString + ")[" + hieroglyphyNumber(9) + "]";
+
+
+    /* Use base64 encoding to retrieve unknown characters using existing characters' bit values
+     * http://en.wikipedia.org/wiki/Base64
+     */
+    characters["B"] = "("+hieroglyphyScript("return btoa")+")("+hieroglyphyString('AAA')+")["+numbers[3]+"]";
+    characters["C"] = "("+hieroglyphyScript("return btoa")+")("+hieroglyphyString('BBB')+")["+numbers[3]+"]";
+    characters["h"] = "("+hieroglyphyScript("return btoa")+")("+hieroglyphyString('aaa')+")["+numbers[3]+"]";
+
+    //now that we have 'C' and 'h' we can use String.fromCharCode
+    fromCharCode = stringConstructor+"["+hieroglyphyString('fromCharCode')+"]";
+
+    //Now we can get these characters without the DOM!
+    characters["p"] = fromCharCode+"("+hieroglyphyString('112')+")";
+    characters["/"] = fromCharCode+"("+hieroglyphyString('47')+")";
+    characters["%"] = fromCharCode+"("+hieroglyphyString('37')+")";
+
+    //debugger;
+
 
     unescape = hieroglyphyScript("return unescape");
     escape = hieroglyphyScript("return escape");
