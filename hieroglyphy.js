@@ -43,7 +43,7 @@
         "9" : "(" + numbers[9] + "+[])"
     };
 
-    _object_Object = "{}+[]";
+    _object_Object = "[]+{}";
     _NaN = "+{}+[]";
     _true = "!![]+[]";
     _false = "![]+[]";
