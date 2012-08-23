@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/alcuadrado/hieroglyphy.png)](http://travis-ci.org/alcuadrado/hieroglyphy)
 # Hieroglyphy
 
 A tool and javascript library for converting strings, numbers, and scripts to
