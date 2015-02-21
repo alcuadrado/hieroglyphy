@@ -58,7 +58,7 @@
     characters["c"] = "(" + _object_Object + ")[" + numbers[5] + "]";
     characters["d"] = "(" + _undefined + ")[" + numbers[2] + "]";
     characters["e"] = "(" + _undefined + ")[" + numbers[3] + "]";
-    characters["f"] = "(" + _undefined + ")[" + numbers[4] + "]";
+    characters["f"] = "(" + _false + ")[" + numbers[0] + "]";
     characters["i"] = "(" + _undefined + ")[" + numbers[5] + "]";
     characters["j"] = "(" + _object_Object + ")[" + numbers[3] + "]";
     characters["l"] = "(" + _false + ")[" + numbers[2] + "]";
