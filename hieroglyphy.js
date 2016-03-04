@@ -74,10 +74,10 @@
     _Infinity = "+(" + numbers[1] + "+" + characters["e"] + "+" +
         characters[1] + "+" + characters[0] + "+" + characters[0] + "+" +
         characters[0] + ")+[]";
-    _number = hieroglyphyScript("return typeof 0");
     characters["m"] = "(" + _number + ")[" + numbers[2] + "]";
     characters["y"] = "(" + _Infinity + ")[" + numbers[7] + "]";
     characters["I"] = "(" + _Infinity + ")[" + numbers[0] + "]";
+    _number = hieroglyphyScript("return typeof 0");
     _Array = "[][" + hieroglyphyString("constructor") + "][" +
         hieroglyphyString("name") + "]";
     _String = hieroglyphyString("0") + "[" + hieroglyphyString("constructor") +
