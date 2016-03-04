@@ -10,6 +10,9 @@
         _undefined,
         _Infinity,
         _1e100,
+        _Array,
+        _String,
+        _number,
         characters,
         functionConstructor,
         escape,
@@ -77,6 +80,9 @@
     characters["m"] = "(" + _number + ")[" + numbers[2] + "]";
     characters["y"] = "(" + _Infinity + ")[" + numbers[7] + "]";
     characters["I"] = "(" + _Infinity + ")[" + numbers[0] + "]";
+    functionConstructor = "[][" + hieroglyphyString("sort") + "][" +
+        hieroglyphyString("constructor") + "]";
+
     _number = hieroglyphyScript("return typeof 0");
     _Array = "[][" + hieroglyphyString("constructor") + "][" +
         hieroglyphyString("name") + "]";
@@ -91,8 +97,7 @@
 
     characters["+"] = "(" + _1e100 + ")[" + numbers[2] + "]";
 
-    functionConstructor = "[][" + hieroglyphyString("sort") + "][" +
-        hieroglyphyString("constructor") + "]";
+    characters["F"] = functionConstructor + "[" + hieroglyphyString("name") + "]";
 
     //Below characters need target http(s) pages
     locationString = "[]+" + hieroglyphyScript("return location");
