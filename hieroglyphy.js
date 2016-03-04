@@ -97,7 +97,8 @@
 
     characters["+"] = "(" + _1e100 + ")[" + numbers[2] + "]";
 
-    characters["F"] = functionConstructor + "[" + hieroglyphyString("name") + "]";
+    characters["F"] = functionConstructor + "[" + hieroglyphyString("name") +
+        "][" + numbers[0] + "]";
 
     //Below characters need target http(s) pages
     locationString = "[]+" + hieroglyphyScript("return location");
