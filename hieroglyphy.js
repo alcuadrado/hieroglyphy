@@ -10,6 +10,9 @@
         _undefined,
         _Infinity,
         _1e100,
+        _Array,
+        _String,
+        _number,
         characters,
         functionConstructor,
         escape,
@@ -74,17 +77,28 @@
     _Infinity = "+(" + numbers[1] + "+" + characters["e"] + "+" +
         characters[1] + "+" + characters[0] + "+" + characters[0] + "+" +
         characters[0] + ")+[]";
-
+    characters["m"] = "(" + _number + ")[" + numbers[2] + "]";
     characters["y"] = "(" + _Infinity + ")[" + numbers[7] + "]";
     characters["I"] = "(" + _Infinity + ")[" + numbers[0] + "]";
+    functionConstructor = "[][" + hieroglyphyString("sort") + "][" +
+        hieroglyphyString("constructor") + "]";
+
+    _number = hieroglyphyScript("return typeof 0");
+    _Array = "[][" + hieroglyphyString("constructor") + "][" +
+        hieroglyphyString("name") + "]";
+    _String = hieroglyphyString("0") + "[" + hieroglyphyString("constructor") +
+        "][" + hieroglyphyString("name") + "]";
+    characters["A"] = "(" + _Array + ")[" + numbers[0] + "]";
+    characters["S"] = "(" + _String + ")[" + numbers[0] + "]";
+    characters["g"] = "(" + _String + ")[" + numbers[5] + "]";
 
     _1e100 = "+(" + numbers[1] + "+" + characters["e"] + "+" +
         characters[1] + "+" + characters[0] + "+" + characters[0] + ")+[]";
 
     characters["+"] = "(" + _1e100 + ")[" + numbers[2] + "]";
 
-    functionConstructor = "[][" + hieroglyphyString("sort") + "][" +
-        hieroglyphyString("constructor") + "]";
+    characters["F"] = functionConstructor + "[" + hieroglyphyString("name") +
+        "][" + numbers[0] + "]";
 
     //Below characters need target http(s) pages
     locationString = "[]+" + hieroglyphyScript("return location");
