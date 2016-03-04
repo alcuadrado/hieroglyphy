@@ -80,7 +80,11 @@
     characters["I"] = "(" + _Infinity + ")[" + numbers[0] + "]";
     _Array = "[][" + hieroglyphyString("constructor") + "][" +
         hieroglyphyString("name") + "]";
+    _String = hieroglyphyString("0") + "[" + hieroglyphyString("constructor") +
+        "][" + hieroglyphyString("name") + "]";
     characters["A"] = "(" + _Array + ")[" + numbers[0] + "]";
+    characters["S"] = "(" + _String + ")[" + numbers[0] + "]";
+    characters["g"] = "(" + _String + ")[" + numbers[5] + "]";
 
     _1e100 = "+(" + numbers[1] + "+" + characters["e"] + "+" +
         characters[1] + "+" + characters[0] + "+" + characters[0] + ")+[]";
