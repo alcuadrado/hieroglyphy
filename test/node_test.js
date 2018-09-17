@@ -1,7 +1,6 @@
 var hieroglyphy = require("../hieroglyphy"),
     assert = require('assert');
 
-global.location = "http://example.com";
 global.testString = "foo";
 
 exports.testHieroglyphyCharacters = function () {
