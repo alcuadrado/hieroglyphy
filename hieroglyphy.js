@@ -10,11 +10,11 @@
         _undefined,
         _Infinity,
         _1e100,
+        _String,
         characters,
         functionConstructor,
         escape,
         unescape,
-        locationString,
         API;
 
     numbers = [
@@ -71,6 +71,12 @@
     characters["N"] = "(" + _NaN + ")[" + numbers[0] + "]";
     characters["O"] = "(" + _object_Object + ")[" + numbers[8] + "]";
 
+    _String = "[]+" + "(" + _object_Object + ")" + "[" + hieroglyphyString("constructor") + "]"; // "‌function String() { [native code] }"
+
+    characters["S"] = "(" + _String + ")" + "[" + numbers[9] + "]";
+    characters["g"] = "(" + _String + ")" + "[" + "(" + numbers[7] + ")" + "+" + "(" + numbers[7] + ")" + "]";
+
+
     _Infinity = "+(" + numbers[1] + "+" + characters["e"] + "+" +
         characters[1] + "+" + characters[0] + "+" + characters[0] + "+" +
         characters[0] + ")+[]";
@@ -86,11 +92,11 @@
     functionConstructor = "[][" + hieroglyphyString("sort") + "][" +
         hieroglyphyString("constructor") + "]";
 
-    //Below characters need target http(s) pages
-    locationString = "[]+" + hieroglyphyScript("return location");
-    characters["h"] = "(" + locationString + ")" + "[" + numbers[0] + "]";
-    characters["p"] = "(" + locationString + ")" + "[" + numbers[3] + "]";
-    characters["/"] = "(" + locationString + ")" + "[" + numbers[6] + "]";
+    //Below characters need _String
+    characters["h"] = "(" + "(" + numbers[9] + ")" + "+" + "(" + numbers[8] + ")" + ")" +
+        "[" + hieroglyphyString("toString") + "]" + "(" + "(" + numbers[9] + ")" + "+" + "(" + numbers[9] + ")" + ")";
+    characters["p"] = "(" + "(" + numbers[9] + ")" + "+" + "(" + numbers[9] + ")" + "+" + "(" + numbers[7] + ")" + ")" +
+        "[" + hieroglyphyString("toString") + "]" + "(" + "(" + numbers[9] + ")" + "+" + "(" + numbers[9] + ")" + "+" + "(" + numbers[8] + ")" + ")";
 
     unescape = hieroglyphyScript("return unescape");
     escape = hieroglyphyScript("return escape");
